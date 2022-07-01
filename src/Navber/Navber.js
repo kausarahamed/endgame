@@ -3,6 +3,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Calendar from "../Calendar/Calendar";
+import Footer from "../Footer/Footer";
 
 const Navber = () => {
   const navigate = useNavigate();
@@ -78,6 +79,7 @@ const Navber = () => {
           </tbody>
         </table>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
