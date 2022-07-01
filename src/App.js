@@ -6,6 +6,7 @@ import Done from "./Done";
 import Calendars from "./Calendar/Calendars";
 import Update from "./Update";
 import Header from "./Navber/Header";
+import Notfound from "./notfound/Notfound";
 function App() {
   return (
     <div>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/completed" element={<Done></Done>} />
         <Route path="/calendars" element={<Calendars></Calendars>} />
         <Route path="update/:id" element={<Update></Update>} />
+        <Route path="*" element={<Notfound></Notfound>} />
       </Routes>
     </div>
   );
