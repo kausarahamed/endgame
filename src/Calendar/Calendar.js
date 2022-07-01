@@ -18,6 +18,7 @@ const Calendar = () => {
       task,
       completed: false,
     };
+    console.log(newTask);
     fetch("http://localhost:5000/task", {
       method: "POST",
       headers: {

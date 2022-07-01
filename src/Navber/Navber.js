@@ -18,7 +18,6 @@ const Navber = () => {
     navigate(`update/${id}`);
   };
   const handleCompleted = (id) => {
-    console.log(id);
     fetch(`http://localhost:5000/completed/${id}`, {
       method: "put",
       headers: {
