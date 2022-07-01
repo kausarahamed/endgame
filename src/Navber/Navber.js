@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import Calendar from "../Calendar/Calendar";
 import Footer from "../Footer/Footer";
+import toast from "react-hot-toast";
 
 const Navber = () => {
   const navigate = useNavigate();
   const [allTask, setAllTask] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/task")
+    fetch("https://protected-bayou-89933.herokuapp.com/task")
       .then((res) => res.json())
       .then((data) => setAllTask(data));
   }, [allTask]);
@@ -18,7 +18,7 @@ const Navber = () => {
     navigate(`update/${id}`);
   };
   const handleCompleted = (id) => {
-    fetch(`http://localhost:5000/completed/${id}`, {
+    fetch(`https://protected-bayou-89933.herokuapp.com/completed/${id}`, {
       method: "put",
       headers: {
         "content-type": "application/json",
@@ -27,13 +27,7 @@ const Navber = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Task is completed",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Task Done");
         }
       });
   };

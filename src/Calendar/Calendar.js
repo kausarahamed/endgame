@@ -3,7 +3,7 @@ import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Calendar = () => {
   const navigate = useNavigate();
@@ -18,8 +18,7 @@ const Calendar = () => {
       task,
       completed: false,
     };
-    console.log(newTask);
-    fetch("http://localhost:5000/task", {
+    fetch("https://protected-bayou-89933.herokuapp.com/task", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,13 +28,7 @@ const Calendar = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Added a new Task",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Add Succes");
           event.target.reset();
           navigate("/");
         }

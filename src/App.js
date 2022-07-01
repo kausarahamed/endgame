@@ -7,6 +7,7 @@ import Calendars from "./Calendar/Calendars";
 import Update from "./Update";
 import Header from "./Navber/Header";
 import Notfound from "./notfound/Notfound";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ function App() {
         <Route path="update/:id" element={<Update></Update>} />
         <Route path="*" element={<Notfound></Notfound>} />
       </Routes>
+      <Toaster></Toaster>
     </div>
   );
 }

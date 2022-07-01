@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import "react-day-picker/dist/style.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Update = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [updateTask, setUpdateTask] = useState({});
   const { date, task } = updateTask;
-  console.log(task);
   useEffect(() => {
-    fetch(`http://localhost:5000/task/${id}`)
+    fetch(`https://protected-bayou-89933.herokuapp.com/task/${id}`)
       .then((res) => res.json())
       .then((data) => setUpdateTask(data));
   }, [id]);
@@ -19,7 +18,7 @@ const Update = () => {
     e.preventDefault();
     const task = e.target.task.value;
 
-    fetch(`http://localhost:5000/task/${id}`, {
+    fetch(`https://protected-bayou-89933.herokuapp.com/task/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -29,20 +28,14 @@ const Update = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Task is Updated",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Update Success");
           navigate("/");
         }
       });
   };
   return (
     <div className="w-1/2 mx-auto">
-      <h1 className="text-3xl text-center font-bold">update task</h1>
+      <h1 className="text-3xl text-center font-bold">Update task</h1>
       <form onSubmit={handleUpdate}>
         <input
           className="text-center w-full mt-4 text-2xl font-bold"
@@ -57,7 +50,7 @@ const Update = () => {
           className="w-full rounded-lg m-2 p-2 border"
           name="task"
           defaultValue={task}
-          placeholder="Add a new task"
+          placeholder="Update task"
         ></textarea>
         <div className="flex justify-center">
           <input type="submit" value="Update" className="btn " />
