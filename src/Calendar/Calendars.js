@@ -1,15 +1,3 @@
-// import React from "react";
-
-// const Calendars = () => {
-//   return (
-//     <div>
-//       <h1>calde</h1>
-//     </div>
-//   );
-// };
-
-// export default Calendars;
-
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";

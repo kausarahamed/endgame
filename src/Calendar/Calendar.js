@@ -9,10 +9,10 @@ const Calendar = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(new Date());
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const date = e.target.date.value;
-    const task = e.target.task.value;
+  const handler = (event) => {
+    event.preventDefault();
+    const date = event.target.date.value;
+    const task = event.target.task.value;
     const newTask = {
       date,
       task,
@@ -35,18 +35,18 @@ const Calendar = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          e.target.reset();
+          event.target.reset();
           navigate("/");
         }
       });
   };
   return (
-    <div className="hero ">
+    <div className="hero">
       <div className="hero-content flex-col lg:flex-row">
         <DayPicker mode="single" selected={selected} onSelect={setSelected} />
         <div>
-          <h1 className="text-3xl text-center font-bold">Add a new task</h1>
-          <form onSubmit={handleSubmit}>
+          <h1 className="text-3xl text-center font-bold">Add task</h1>
+          <form onSubmit={handler}>
             <input
               className="text-center w-full mt-4 text-2xl font-bold"
               type="text"
@@ -59,7 +59,7 @@ const Calendar = () => {
             <textarea
               className="w-full rounded-lg m-2 p-2 border"
               name="task"
-              placeholder="Add a new task"
+              placeholder="Add task"
             ></textarea>
             <div className="flex justify-center">
               <input type="submit" value="Add" className="btn " />

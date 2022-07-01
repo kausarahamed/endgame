@@ -1,15 +1,3 @@
-// import React from "react";
-
-// const Update = () => {
-//   return (
-//     <div>
-//       <h1>ddh</h1>
-//     </div>
-//   );
-// };
-
-// export default Update;
-
 import { useEffect, useState } from "react";
 import "react-day-picker/dist/style.css";
 import { useNavigate, useParams } from "react-router-dom";
