@@ -46,12 +46,13 @@ const Update = () => {
           disabled
         />
         <br />
-        <textarea
+        <input
           className="w-full rounded-lg m-2 p-2 border"
           name="task"
           defaultValue={task}
           placeholder="Update task"
-        ></textarea>
+          type="text"
+        ></input>
         <div className="flex justify-center">
           <input type="submit" value="Update" className="btn " />
         </div>
